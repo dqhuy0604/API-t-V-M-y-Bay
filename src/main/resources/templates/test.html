@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel ="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+  <title>Kết quả tìm kiếm</title>
+</head>
+<body>
+<h1>Kết quả tìm kiếm chuyến bay</h1>
+
+<p>
+  <strong>Nơi đi:</strong> <span th:text="${departureAirportCode}"> </span><br>
+  <strong>Nơi đến:</strong> <span th:text="${destinationAirportCode}"></span><br>
+  <strong>Ngày đi:</strong> <span th:text="${departureDay}"></span>
+</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>code</th>
+    <th>Nơi đến</th>
+    <th>Ngày đi</th>
+    <th>Thời gian đi</th>
+  </tr>
+  </thead>
+  <tbody>
+  <th:block th:each="flight : ${flights}">
+    <tr>
+      <td>[[${flight.id}]] </td>
+      <td>[[${flight.airlineCode}]]</td>
+      <td>[[${flight.departureAirport.getCity()}]]</td>
+      <td>[[${flight.destinationAirport.getCity()}]]</td>
+      <td>[[${flight.departureTime}]]</td>
+      <td>[[${flight.departureDay}]]</td>
+      <td>[[${flight.getStatus()}]]</td>
+    </tr>
+  </th:block>
+  </tbody>
+</table>
+</body>
+</html>

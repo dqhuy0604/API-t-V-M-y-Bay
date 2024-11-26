@@ -1,0 +1,153 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 15%;
+    background-color: #212529;
+    color: #fff;
+    min-height: 100vh;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 1.5em;
+}
+
+.sidebar a {
+    color: #adb5bd;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: block;
+    font-size: 0.9em;
+}
+
+.sidebar a:hover, .sidebar a.active {
+    background-color: #495057;
+    color: #ffffff;
+}
+
+/* Main content styles */
+.main-content {
+    margin-left: 15%;
+    padding: 20px;
+    width: 85%;
+    background-color: #f8f9fa;
+}
+
+.main-content h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #343a40;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.main-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 10px auto 0;
+}
+
+.sidebar a, .main-content a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: #adb5bd; /* Màu chữ mặc định */
+}
+
+.sidebar a:hover, .sidebar a.active {
+    text-decoration: none; /* Giữ không gạch chân khi hover */
+}
+
+.action-buttons a {
+    text-decoration: none; /* Loại bỏ gạch chân ở các nút */
+}
+
+.action-buttons a:hover {
+    text-decoration: none; /* Giữ không gạch chân khi hover */
+}
+
+.main-content a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+    background-color:#343a40;
+    border-color:#343a40;
+}
+
+
+.main-content a:hover {
+    text-decoration: underline;
+}
+
+/* Table styling */
+.table-container {
+    overflow-x: auto;
+}
+
+.table {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.thead-dark {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.alert {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.action-buttons a {
+    font-size: 0.9em;
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.action-buttons .edit-btn {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.action-buttons .edit-btn:hover {
+    background-color: #138496;
+}
+
+.action-buttons .delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.action-buttons .delete-btn:hover {
+    background-color: #c82333;
+}
+
+.action-buttons .update-btn {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.action-buttons .update-btn:hover {
+    background-color: #218838;
+}

@@ -1,0 +1,52 @@
+
+.sort-dropdown {
+    position: absolute; /* Đặt vị trí tuyệt đối để dễ kiểm soát */
+    right: 155px; /* Cách bên phải 300px */
+    display: inline-block;
+    float: right;
+}
+
+.sort-button {
+    background-color: #28a745;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+.sort-button .current-sort {
+    background-color: transparent; /* Loại bỏ nền trắng */
+    color: inherit; /* Kế thừa màu chữ từ nút */
+    padding: 0; /* Loại bỏ khoảng đệm */
+    margin: 0; /* Loại bỏ khoảng cách */
+    display: inline; /* Hiển thị trên cùng một dòng */
+    font-size: 18px;
+}
+.sort-button:hover {
+    background-color: #ffa500;
+}
+
+.sort-menu {
+    display: none;
+    position: absolute;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    width: 200px;
+    z-index: 1000;
+}
+
+.sort-menu li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sort-menu li:hover {
+    background: #F3F3F3;
+}
+.sort-menu .selected {
+    color: #ffa500;
+    font-weight: bold;
+}

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Ticket</title>
+<!--    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />-->
+
+    <!-- Favicon -->
+    <!--<link href="img/favicon.ico" rel="icon">-->
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
+
+    <style>
+
+        .form-container {
+
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-header a {
+            font-weight: bold;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab-header a.active {
+            /*color: white;*/
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .tab-content {
+            margin-top: 20px;
+        }
+
+        .bg-light-custom {
+            background-color: #f8f9fa;
+        }
+
+        .bg-primary-custom {
+            color: #fff;
+        }
+
+        .btn-primary-custom {
+            color: white;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            float: left;
+            min-width: 100%;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            font-size: 1rem;
+            color: #212529;
+            text-align: left;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 0.25rem;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        /* Make sure table occupies full width */
+        .table-sm {
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .table-sm td {
+            vertical-align: middle; /* Ensure buttons are vertically aligned with text */
+        }
+
+        .table-sm td button {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .text-end {
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Topbar Start -->
+<div class="container-fluid bg-light pt-3 d-none d-lg-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                    <p class="text-body px-3">|</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-primary px-3" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-primary px-3" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-primary px-3" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-primary px-3" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-primary pl-3" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+            <a href="" class="navbar-brand">
+                <h1 class="m-0 text-primary"><span class="text-dark">HAPPI</span>EST</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                <div class="navbar-nav ml-auto py-0">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Exploring</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            <a href="#" class="dropdown-item">Destination</a>
+                            <a href="#" class="dropdown-item">Special Offers</a>
+                            <a href="#" class="dropdown-item">Flight Ticket</a>
+                            <a href="#" class="dropdown-item">Flight Schedule</a>
+                            <a href="#" class="dropdown-item">Services</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Booking</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            <a href="#" class="dropdown-item">Booking Now</a>
+                            <a href="#" class="dropdown-item">Ticket Booking Information</a>
+                            <a href="#" class="dropdown-item">Aillary Services</a>
+                            <a href="#" class="dropdown-item">Experiencing with Happiest</a>
+                            <a href="#" class="dropdown-item">Complementary Products</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Information</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            <a href="#" class="dropdown-item">Luggage</a>
+                            <a href="#" class="dropdown-item">Procedures</a>
+                            <a href="#" class="dropdown-item">Special Services</a>
+                            <a href="#" class="dropdown-item">Document Requirements</a>
+                            <a href="#" class="dropdown-item">Airports And Flight Networks</a>
+                        </div>
+                    </div>
+                    <a href="#club" class="nav-item nav-link">Happiest Club</a>
+                    <a href="./support.html" class="nav-item nav-link">Support</a>
+                    <a href="./login.html" class="nav-item nav-link">Login</a>
+                    <a href="./Signup.html" class="nav-item nav-link">Signup</a>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar End -->
+
+<div class="container my-5">
+    <div class="form-container">
+        <!-- Tab Header -->
+        <div class="tab-header d-flex justify-content-start border-bottom bg-light-custom">
+            <a href="#" class="active" id="tab-booking">Booking</a>
+            <a href="#" id="tab-checkin">
+                Procedures</a>
+        </div>
+
+        <!-- Content Tabs -->
+        <div class="tab-content">
+            <!-- Booking Form -->
+            <div id="booking-section">
+                <form action="ticket_list" method="get">
+                    <!-- choosing type of flights -->
+                    <div class="mb-3">
+                        <label class="form-label">Select flight type</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="flightType" id="oneWay" value="one-way" checked>
+                            <label class="form-check-label" for="oneWay">One-way</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="flightType" id="roundTrip" value="round-trip" >
+                            <label class="form-check-label" for="roundTrip">Round-trip</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <a href="/booking_ticket_dachan.html">
+                                <input class="form-check-input" type="radio" name="flightType" id="multiCity" value="multi-city">
+                                <label class="form-check-label" for="multiCity">Multi-block</label></a>
+
+                        </div>
+                    </div>
+                    <!-- Destination -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">From</label>
+                            <select id="departureAirportCode" name="departureAirportCode" class="form-control" required>
+                                <option value="" disabled selected>Select Departure Airport</option>
+                                <option th:each="airport : ${listAirports}" th:value="${airport.code}" th:text="${airport.city}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">To</label>
+                            <select id="destinationAirportCode " name="destinationAirportCode" class="form-control" required>
+                                <option value="" disabled selected>Select Destination Airport</option>
+                                <option th:each="airport : ${listAirports}" th:value="${airport.code}" th:text="${airport.city}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Departure date and return date -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="departureDay" class="form-label"> Departure date</label>
+                            <input type="date" id="departureDay" name="departureDay" class="form-control">
+                        </div>
+                        <div class="col-md-6" id="date2">
+                            <label for="destinationDay" class="form-label">Destination date</label>
+                            <input type="date" id="destinationDay" name="departureDay"  class="form-control" >
+                        </div>
+                    </div>
+
+                    <!-- Passengers -->
+                    <div class="mb-3 position-relative">
+                        <label for="no_of_passengers" class="form-label">Passengers</label>
+                        <input
+                                type="text"
+                                id="no_of_passengers"
+                                class="form-control passenger-input"
+                                readonly
+                                value="0 Adult, 0 Children, 0 Babies"
+                        >
+                        <div class="dropdown-menu" id="no_of_passengersMenu">
+                            <table class="table table-sm">
+                                <tbody>
+                                <tr>
+                                    <td><label for="adult-count">Adult (12+):</label></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-counter" onclick="changePassenger('adult', -1)">-</button>
+                                    </td>
+                                    <td><span id="adult-count">1</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-counter" onclick="changePassenger('adult', 1)">+</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="child-count">Children (2-11):</label></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-counter" onclick="changePassenger('child', -1)">-</button>
+                                    </td>
+                                    <td><span id="child-count">0</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-counter" onclick="changePassenger('child', 1)">+</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="infant-count">Babies (0-2):</label></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-counter" onclick="changePassenger('infant', -1)">-</button>
+                                    </td>
+                                    <td><span id="infant-count">0</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-counter" onclick="changePassenger('infant', 1)">+</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-end">
+                                <button type="button" class="btn btn-primary btn-sm mt-2" onclick="closeDropdown()">Complete</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Voucher -->
+                    <div class="mb-3">
+                        <label for="discountCode" class="form-label">Enter your vouchers</label>
+                        <input type="text" id="discountCode" class="form-control" placeholder="Enter voucher code">
+                    </div>
+
+                    <!-- Finding flights -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <input type="checkbox" id="useAccount">
+                            <label for="useAccount">Use my Happiest Club account to book tickets</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary px-5">Finding flights</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Check-in Form -->
+            <div id="checkin-section" style="display: none;">
+                <h4>Procedures</h4>
+                <form>
+                    <!-- Reservation Code Fix -->
+                    <div class="mb-3">
+                        <label for="checkinCode" class="form-label">Reservation Code</label>
+                        <input type="text" id="checkinCode" class="form-control" placeholder="Enter Reservation Code">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Procedure</button>
+
+                </form>
+            </div>
+
+            <!-- My Booking -->
+            <div id="my-booking-section" style="display: none;">
+                <h4>Booking My Place</h4>
+                <p>Manage your booked flights here.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+    <div class="row pt-5">
+        <div class="col-lg-3 col-md-6 mb-5">
+            <a href="" class="navbar-brand">
+                <h1 class="text-primary"><span class="text-white">HAPPI</span>EST</h1>
+            </a>
+            <p>Fly high, reach your dreams <br> Book your flight with just one touch!</p>
+            <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+            <div class="d-flex justify-content-start">
+                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
+            <div class="d-flex flex-column justify-content-start">
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Happiest's gifts</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Culinary Services</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Favorite Seat</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Travel Insurance</a>
+                <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Buying Extra Luggage</a>
+                <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Club</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
+            <div class="d-flex flex-column justify-content-start">
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Travel Guide</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Domestic Journey</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Domestic Flights</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Legal</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Help</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+            <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Ho Chi Minh City, Vietnam</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
+            <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+            <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
+            <div class="w-100">
+                <div class="input-group">
+                    <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary px-3">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="../static/lib/easing/easing.min.js"></script>
+<script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="../static/lib/tempusdominus/js/moment.min.js"></script>
+<script src="../static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+<!-- Template Javascript -->
+<script src="../static/js/main.js"></script>
+<script>
+    const no_of_passengers = document.getElementById('no_of_passengers');
+    const no_of_passengersMenu = document.getElementById('no_of_passengersMenu');
+    const adultCount = document.getElementById('adult-count');
+    const childCount = document.getElementById('child-count');
+    const infantCount = document.getElementById('infant-count');
+
+    // Open/close dropdown logic
+    no_of_passengers.addEventListener('click', (event) => {
+        event.stopPropagation(); // Ngăn không cho sự kiện lan ra ngoài
+        no_of_passengersMenu.classList.toggle('show');
+    });
+
+    // Update the input value
+    function updatePassengerInput() {
+        const adult = parseInt(adultCount.textContent, 10);
+        const child = parseInt(childCount.textContent, 10);
+        const infant = parseInt(infantCount.textContent, 10);
+        no_of_passengers.value = `${adult} Adult, ${child} Children, ${infant} Babies`;
+    }
+
+    // Update passenger count
+    function changePassenger(type, delta) {
+        const countElement = document.getElementById(`${type}-count`);
+        let count = parseInt(countElement.textContent, 10);
+
+        if (type === 'infant') {
+            const adultCountValue = parseInt(adultCount.textContent, 10);
+            if (delta > 0 && count >= adultCountValue) {
+                alert('Infants cannot exceed the number of adults.');
+                return;
+            }
+        }
+
+        if (type === 'adult' && delta < 0 && count === 1 && parseInt(infantCount.textContent, 10) > 0) {
+            alert('At least one adult is required if infants are present.');
+            return;
+        }
+
+        count = Math.max(0, count + delta); // Ensure count doesn't go below 0
+        countElement.textContent = count;
+
+        updatePassengerInput();
+    }
+
+    // Close dropdown if clicking outside
+    document.addEventListener('click', (event) => {
+        if (!no_of_passengers.contains(event.target) && !no_of_passengersMenu.contains(event.target)) {
+            no_of_passengersMenu.classList.remove('show');
+        }
+    });
+
+    // Close dropdown and finalize selection
+    function closeDropdown() {
+        no_of_passengersMenu.classList.remove('show');
+        updatePassengerInput();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy các phần tử cần sử dụng
+        const roundTripRadio = document.getElementById("roundTrip");
+        const oneWayRadio = document.getElementById("oneWay");
+        const returnDateElement = document.getElementById("date2");
+
+        // Hàm kiểm tra và hiển thị/ẩn trường Return Date
+        function toggleReturnDate() {
+            if (roundTripRadio.checked) {
+                returnDateElement.style.display = "block"; // Hiển thị
+            } else {
+                returnDateElement.style.display = "none"; // Ẩn
+            }
+        }
+
+        // Gán sự kiện cho các radio button
+        roundTripRadio.addEventListener("change", toggleReturnDate);
+        oneWayRadio.addEventListener("change", toggleReturnDate);
+
+        // Gọi hàm để kiểm tra trạng thái ban đầu
+        toggleReturnDate();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+button {
+    padding: 10px 20px;
+    background-color:#28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+}
+select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+select#class {
+    background-color: white;
+    border: 1px solid #ccc; /* Viền nhẹ */
+    border-radius: 5px; /* Bo góc */
+    padding: 5px; /* Khoảng cách bên trong */
+    color: #7AB730; /* Màu chữ bên trong */
+    font-size: 16px; /* Kích thước chữ */
+    outline: none; /* Loại bỏ viền khi focus */
+    width: 100%; /* Tùy chỉnh kích thước */
+}
+
+select#class option {
+    color: #7AB730; /* Màu chữ của từng tùy chọn */
+    background-color: white; /* Nền trắng cho từng tùy chọn */
+}
+/* Button for opening filter */
+.btn-open {
+    font-weight: bold;
+    margin-left: 160px;
+}
+
+.btn-open:hover {
+    background-color: #e0a800;
+}
+.btn-apply {
+    background-color: #28a745;
+    color: white;
+}
+/* Đặt chiều cao cố định và thêm thanh cuộn */
+.filter-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 600px; /* Đặt chiều cao của panel là 400px */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ẩn thanh cuộn của panel */
+    font-size: 20px;
+    background-color: #F3F3F3;
+}
+/* Header của bộ lọc */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.filter-header h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #7AB730;
+}
+
+.close-btn {
+    color: #000;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.close-btn:hover {
+    color: #28a745;
+}
+/* Body nội dung cuộn */
+.filter-body {
+    max-height: 6000px; /* Đặt chiều cao tối đa cho phần body */
+    overflow-y: auto;  /* Bật thanh cuộn dọc */
+    margin-bottom: 20px;
+    color:#7AB730;
+}
+
+/* Thanh cuộn */
+.filter-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.filter-body::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+.filter-body::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}
+
+/* Phần section */
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.budget-values {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.radio-option {
+    position: relative;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin: 10px 0;
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0; /* Ẩn nút radio mặc định */
+}
+
+.radio-option label {
+    padding-left: 35px; /* Tạo khoảng cách giữa label và nút radio */
+    font-size: 16px;
+    line-height: 1; /* Đảm bảo văn bản căn chỉnh tốt */
+    cursor: pointer;
+    position: relative;
+}
+
+.radio-option input[type="radio"] + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Căn chỉnh nút giữa */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFD700; /* Viền vàng */
+    border-radius: 50%; /* Tạo hình tròn */
+    background: #FFF; /* Nền trắng */
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng */
+}
+
+.radio-option input[type="radio"]:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 6px; /* Căn chỉnh nội dung bên trong vòng */
+    top: 50%;
+    transform: translateY(-50%); /* Căn chỉnh giữa */
+    width: 10px;
+    height: 10px;
+    background: #FFD700; /* Màu vàng bên trong */
+    border-radius: 50%; /* Hình tròn */
+}
+
+/* Dropdown toggle */
+.toggle-label {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: #7AB730;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.toggle-label:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.filter-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.btn-reset {
+    background-color: #28a745;
+    color: white;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+}
+
+.btn-reset:hover {
+    background-color: #e0a800;
+}
+
+.btn-apply:hover {
+    background-color: #e0a800;
+}
+
+/* Hiển thị nhóm thời gian */
+.time-group {
+    margin-top: 10px;
+}
+
+.time-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+
+/* Hiển thị khi toggle */
+.hidden {
+    display: none;
+}
+
+#timeOptions {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+#budget {
+    width: 100%; /* Hoặc giá trị cụ thể, ví dụ: 300px */
+    height: 8px; /* Tăng độ dày nếu cần */
+    appearance: none; /* Xóa kiểu mặc định của trình duyệt */
+    background: #e0a800; /* Màu nền thanh kéo */
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+#budget::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px; /* Kích thước nút kéo */
+    height: 20px;
+    background: #e0a800; /* Màu của nút kéo */
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+

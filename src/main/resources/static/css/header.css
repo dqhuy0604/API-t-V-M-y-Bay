@@ -1,0 +1,46 @@
+.flight-info {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 140px;
+}
+.flight-info .route1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 200px;
+    color:#28a745;
+}
+.flight-info .route {
+    font-size: 1.2em;
+    font-weight: bold;
+    color:#28a745;
+    margin-right: 140px;
+}
+
+
+.flight-info div {
+    text-align: left;
+    margin-right: 15px;
+    margin-bottom: 50px;
+}
+
+.flight-info div:not(:last-child) {
+    margin-right: 15px;
+}
+
+.action-buttons {
+    text-align: center;  /* Căn giữa tất cả các nút trong phần tử cha */
+    margin-top: 20px;     /* Thêm khoảng cách phía trên */
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: auto;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+
+}

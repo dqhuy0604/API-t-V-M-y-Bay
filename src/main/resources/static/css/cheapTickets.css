@@ -1,0 +1,103 @@
+.date-header {
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color: #28a745;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-container {
+    position: relative;
+    text-align: center;
+    margin-bottom: -20px; /* Để đưa nút dính lên container */
+    z-index: 2; /* Đảm bảo nút hiển thị trên container */
+}
+
+#toggle-btn {
+    margin-top:50px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    color: #28a745;
+}
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0f2f1;
+    padding: 50px;  /* Giữ padding lớn để tạo không gian cho phần tử bên trong */
+    border-radius: 30px;
+    max-width: 1200px;  /* Tăng max-width để container rộng hơn */
+    width: 100%;  /* Đảm bảo container chiếm toàn bộ chiều rộng có sẵn */
+    overflow: hidden;
+    box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.2);  /* Tăng độ đổ bóng */
+    transition: max-height 0.3s ease;
+    max-height: 300px;  /* Tăng max-height nếu cần */
+
+}
+
+.slider-container.hidden {
+    max-height: 0;
+    padding: 0;
+}
+
+.slider {
+    background:none;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+.card {
+    flex: 0 0 auto;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 10px;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card.selected {
+    background-color: #fdd835;  /* Màu vàng khi chọn */
+}
+
+.card.unselected {
+    background-color: #ffffff;  /* Màu trắng khi không chọn */
+}
+
+.nav-button {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+.cheapest-text {
+    margin-top: 20px;
+    margin-bottom:30px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #28a745;
+    left:500px;
+    position: relative;
+    font-size: 18px;
+}

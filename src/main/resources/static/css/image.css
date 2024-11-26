@@ -1,0 +1,27 @@
+.text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #28a745;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    text-align: center;
+    background:white;
+    font-weight: bold; /* Làm cho chữ đậm */
+    line-height: 1; /* Điều chỉnh khoảng cách giữa các dòng */
+
+}
+.image-section {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.image-section img {
+    display: block;
+    margin: auto;
+    width: 1510px;
+    height: 300px;
+}

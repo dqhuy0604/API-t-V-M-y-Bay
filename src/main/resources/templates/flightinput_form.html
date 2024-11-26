@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .form-container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="text-center my-4">
+        <h2>Form tim may bay</h2>
+    </div>
+    <form action="flightfind_1" method="get"class="form-container p-4 mx-auto"
+          style="max-width: 500px;">
+        <div class="border-bottom pb-3 mb-3">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Departure:</label>
+                <div class="col-sm-8">
+                    <select id="departureAirportCode" name="departureAirportCode" class="form-control" required>
+                        <option value="" disabled selected>Select Departure Airport</option>
+                        <option th:each="airport : ${listAirports}" th:value="${airport.code}" th:text="${airport.city}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Destination Field -->
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Destination:</label>
+                <div class="col-sm-8">
+                    <select id="destinationAirportCode " name="destinationAirportCode" class="form-control" required>
+                        <option value="" disabled selected>Select Destination Airport</option>
+                        <option th:each="airport : ${listAirports}" th:value="${airport.code}" th:text="${airport.city}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">DepartureTime:</label>
+                <div class="col-sm-8">
+                    <input type="date" id="departureDay" name="departureDay" class="form-control" required minlength="1"/>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
+            </div>
+    </form>
+</div>
+<script>
+    function cancelForm() {
+        window.location = "[[@{/flights}]]";
+    }
+    const departureDay = document.getElementById('departureDay');
+    const returnDate = document.getElementById('returnDate');
+
+    function getToday() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+    const today = getToday();
+    departureDay.min = today;
+    departureDay.addEventListener('change', () => {
+        const departureValue = departureDay.value;
+
+        if (departureValue) {
+            returnDate.min = departureValue;
+
+            if (returnDate.value && returnDate.value < departureValue) {
+                returnDate.value = departureValue;
+            }
+        }
+    });
+
+    returnDate.addEventListener('change', () => {
+        const departureValue = departureDay.value;
+        const returnValue = returnDate.value;
+        if (departureValue && returnValue < departureValue) {
+            alert('Ngày về không được trước ngày đi!');
+            returnDate.value = departureValue;
+        }
+    });
+</script>
+</body>
+</html>

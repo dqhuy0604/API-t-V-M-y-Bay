@@ -1,0 +1,33 @@
+/* Thông tin chuyến bay */
+.flight-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+}
+
+/* Thông tin chi tiết chuyến bay */
+.flight-details {
+    width: 60%;
+}
+
+.flight-time {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.flight-info {
+    color: #888;
+    margin-bottom: 8px;
+}
+
+/* Giá chuyến bay */
+.flight-price {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}

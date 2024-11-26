@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Payments</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/lib/easing/easing.min.js"></script>
+  <script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="../static/lib/tempusdominus/js/moment.min.js"></script>
+  <script src="../static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="../static/css/style.css" rel="stylesheet">
+  <!-- Contact Javascript File -->
+  <!--<script src="smail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>-->
+
+  <!-- Template Javascript -->
+  <script src="../static/js/main.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style1.css">
+  <style>
+    body {
+      font-family: 'Maven Pro', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F3F3F3;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+    .btn-square {
+      width: 50px;          /* Kích thước cố định chiều rộng */
+      height: 50px;         /* Kích thước cố định chiều cao */
+      display: flex;        /* Căn giữa nội dung bên trong */
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #7AB730; /* Viền màu xanh lá */
+      border-radius: 5px;  /* Góc bo viền */
+      transition: 0.3s;    /* Hiệu ứng hover */
+    }
+
+    .btn-square i {
+      font-size: 18px;     /* Kích thước icon */
+      color: #7AB730;      /* Màu của icon */
+    }
+
+    .container1 {
+      max-width: 1100px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+
+    .flight-card {
+      border-bottom: 2px solid #ddd;
+      padding: 20px 0;
+    }
+
+    .flight-card:last-child {
+      border-bottom: none;
+    }
+
+    .flight-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .flight-details {
+      margin-top: 8px;
+      font-size: 20px;
+    }
+
+    .total-price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #7AB730;
+      margin-top: 20px;
+      text-align: right;
+      position: relative;
+      right: 190px;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      text-align: right;
+    }
+
+    .btn1 {
+      text-decoration: none;
+      padding: 15px 25px;
+      margin: 0 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .btn1-continue {
+      background-color: #7AB730;
+      color: #fff;
+      position: relative;
+      right: 170px;
+    }
+
+    .btn1-login {
+      background-color: #fff;
+      border: 2px solid #7AB730;
+      color: #7AB730;
+      position: relative;
+      right: 170px;
+    }
+
+    .btn1-continue:hover {
+      background-color: #fdd835;
+      color: #fff;
+    }
+
+    .btn1-login:hover {
+      background-color: #fdd835;
+      color: #fff;
+      border-color: #fdd835;
+    }
+
+    .policy-links {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #7AB730;
+      text-align: right;
+      position: relative;
+      right: 185px;
+    }
+
+    .policy-links a {
+      text-decoration: none;
+      color: #7AB730;
+    }
+
+    .policy-links a:hover {
+      text-decoration: underline;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .arrow-btn {
+      background: #fff;
+      border: 1px solid #7AB730;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+      color:#7AB730;
+    }
+
+    .arrow-btn:hover {
+      background: #fdd835;
+      color: #fff;
+    }
+
+    .horizontal-line {
+      margin-top: 10px;
+      height: 1px;
+      width: 100%;
+      border: none;
+    }
+    .details-container1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 20px;
+      background-color: #F9F9F9;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #E0E0E0;
+    }
+
+    .left-details, .right-details {
+      flex: 1;
+    }
+
+    .left-details h3, .right-details h3 {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center; /* Căn giữa toàn bộ nội dung */
+
+    }
+
+    .left-details ul, .right-details ul {
+      list-style-type: none;
+      padding: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .left-details ul li, .right-details ul li {
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+    .details-container1 {
+      display: none;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Topbar Start -->
+<div class="container-fluid bg-light pt-3 d-none d-lg-block" >
+  <div class="container" style="background:none;">
+    <div class="row">
+      <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0" style="background:none;">
+        <div class="d-inline-flex align-items-center" style="background:none;">
+          <p style="background:none;"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+          <p class="text-body px-3" style="background:none;">|</p>
+          <p style="background:none;"><i class="fa fa-phone-alt mr-2" style="background:none;"></i>+012 345 6789</p>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center text-lg-right" style="background:none;">
+        <div class="d-inline-flex align-items-center" style="background:none;">
+          <a class="text-primary px-3" href="" style="background:none;">
+            <i class="fab fa-facebook-f" style="background:none;"></i>
+          </a>
+          <a class="text-primary px-3" href="" style="background:none;">
+            <i class="fab fa-twitter" style="background:none;"></i>
+          </a>
+          <a class="text-primary px-3" href="" style="background:none;">
+            <i class="fab fa-linkedin-in" style="background:none;"></i>
+          </a>
+          <a class="text-primary px-3" href="" style="background:none;">
+            <i class="fab fa-instagram" style="background:none;"></i>
+          </a>
+          <a class="text-primary pl-3" href="" style="background:none;">
+            <i class="fab fa-youtube" style="background:none;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Topbar End -->
+  <!-- Navbar Start -->
+  <div class="container-fluid position-relative nav-bar p-0" style = "height:50px">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;background:none;">
+      <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5" style="background:white;">
+        <a href="" class="navbar-brand" >
+          <h1 class="m-0 text-primary" style="background:none;"><span class="text-dark" style="background:none;">HAPPI</span>EST</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" style="background:none">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse" style="background:none;">
+          <div class="navbar-nav ml-auto py-0" style="background:none;">
+            <div class="nav-item dropdown" style="background:none;">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="background:none;">Exploring</a>
+              <div class="dropdown-menu border-0 rounded-0 m-0" >
+                <a href="#" class="dropdown-item">Destination</a>
+                <a href="#" class="dropdown-item">Special Offers</a>
+                <a href="#" class="dropdown-item">Flight Ticket</a>
+                <a href="#" class="dropdown-item">Flight Schedule</a>
+                <a href="#" class="dropdown-item" >Services</a>
+              </div>
+            </div>
+
+            <div class="nav-item dropdown" style="background:none;">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="background:none;">Booking</a>
+              <div class="dropdown-menu border-0 rounded-0 m-0">
+                <a href="#" class="dropdown-item">Booking Now</a>
+                <a href="#" class="dropdown-item">Ticket Booking Information</a>
+                <a href="#" class="dropdown-item">Aillary Services</a>
+                <a href="#" class="dropdown-item">Experiencing with Happiest</a>
+                <a href="#" class="dropdown-item">Complementary Products</a>
+              </div>
+            </div>
+            <div class="nav-item dropdown" style="background:none;">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="background:none;">Information</a>
+              <div class="dropdown-menu border-0 rounded-0 m-0">
+                <a href="#" class="dropdown-item">Luggage</a>
+                <a href="#" class="dropdown-item">Procedures</a>
+                <a href="#" class="dropdown-item">Special Services</a>
+                <a href="#" class="dropdown-item">Document Requirements</a>
+                <a href="#" class="dropdown-item">Airports And Flight Networks</a>
+              </div>
+            </div>
+            <a href="#club" class="nav-item nav-link">Happiest Club</a>
+            <a href="./support.html" class="nav-item nav-link">Support</a>
+            <a href="./login.html" class="nav-item nav-link">Login</a>
+            <a href="./Signup.html" class="nav-item nav-link">Signup</a>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- Navbar End -->
+</div>
+
+<h2 style="text-align:center; color: #7AB730;margin-top:100px">Flights</h2>
+<div class="container1">
+  <div class="flight-card">
+    <div>
+      <strong style="color:black">th:${fligjt} to Hanoi</strong> - <span class="date">Thursday, December 12, 2024</span><br>
+    </div>
+
+    <!-- Horizontal line -->
+    <div class="horizontal-line"></div>
+
+    <div class="flight-info">
+      <div>
+        <span class="flight-details">05:00 - Direct flight - 07:10<br>HAN (Terminal 1) → SGN (Terminal 1)</span><br>
+        <span>Flight duration: 2h 10min</span>
+      </div>
+      <div>
+        <div class="detail-header">
+          <span>Standard Economy</span>
+          <!-- Arrow button -->
+          <button class="arrow-btn" onclick="toggleDetails()">
+            <span id="arrow">▼</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flight details and price -->
+    <div id="details" class="details-container1">
+      <!-- Flight itinerary -->
+      <div class="left-details">
+        <h3>Flight Details</h3>
+        <ul>
+          <li>
+            <div class="timeline-container">
+              <div>
+                <p><strong>05:00 Ho Chi Minh City</strong><br><span>Tan Son Nhat Airport, Vietnam<br>Terminal 1</span></p>
+                <p style="text-align: center;">Arrival</p>
+                <p><strong>07:05 Hanoi</strong><br><span>Noi Bai Airport, Vietnam<br>Terminal 1</span></p>
+              </div>
+            </div>
+          </li>
+          <li><strong>Noi Bai Airport, Vietnam (Terminal 1)</strong></li>
+          <li><strong>Flight duration:</strong> 2 hours 5 minutes</li>
+          <li><strong>Flight number:</strong> VN 6002</li>
+          <li><strong>Aircraft:</strong> Airbus A321</li>
+        </ul>
+      </div>
+      <!-- Ticket price -->
+      <div class="right-details">
+        <h3>Your Ticket Price</h3>
+        <ul>
+          <li><strong>Ticket changes:</strong> Change fee up to 860,000 VND</li>
+          <li><strong>Refund:</strong> Refund fee up to 860,000 VND</li>
+          <li><strong>Checked baggage:</strong> 1 x 23 kg</li>
+          <li><strong>Cabin baggage:</strong> 1 x 7 kg</li>
+          <li><strong>Miles earned:</strong> Earn 80% of the miles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Total price -->
+<div class="total-price">Total amount: 5,456,000 VND</div>
+
+<!-- Policy links -->
+<div class="policy-links">
+  <a href="#">Baggage Policy</a> |
+  <a href="#">Review Terms and Conditions</a> |
+  <a href="#">Dangerous Goods Policy</a>
+</div>
+
+<!-- Buttons -->
+<div class="buttons">
+  <a href="customer_input.html" class="btn1 btn1-continue">Continue</a>
+  <a href="customer_input.html" class="btn1 btn1-login">Log in and continue</a>
+</div>
+
+<script>
+  function toggleDetails() {
+    const details = document.getElementById('details');
+    const arrow = document.getElementById('arrow');
+    if (details.style.display === 'none' || details.style.display === '') {
+      details.style.display = 'flex';
+      arrow.innerHTML = '▲';
+    } else {
+      details.style.display = 'none';
+      arrow.innerHTML = '▼';
+    }
+  }
+</script>
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+  <div class="row pt-5">
+    <div class="col-lg-3 col-md-6 mb-5" style="background:none">
+      <a href="" class="navbar-brand">
+        <h1 class="text-primary" style="background:none"><span class="text-white" style="background:none">HAPPI</span>EST</h1>
+      </a>
+      <p style="background:none">Fly high, reach your dreams <br style="background:none"> Book your flight with just one touch!</p>
+      <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;background:none">Follow Us</h6>
+      <div class="d-flex justify-content-center align-items-center" style="gap: 10px; background: none;">
+        <a class="btn btn-outline-primary btn-square" href="#">
+          <i class=" fab fa-twitter"></i>
+        </a>
+        <a class="btn btn-outline-primary btn-square" href="#">
+          <i class=" fab fa-facebook-f"></i>
+        </a>
+        <a class="btn btn-outline-primary btn-square" href="#">
+          <i class=" fab fa-linkedin-in"></i>
+        </a>
+        <a class="btn btn-outline-primary btn-square" href="#">
+          <i class=" fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-5" style="background:none">
+      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;background:none">Our Services</h5>
+      <div class="d-flex flex-column justify-content-start" style="background:none">
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Happiest's gifts</a>
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Culinary Services</a>
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Favorite Seat</a>
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Travel Insurance</a>
+        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Buying Extra Luggage</a>
+        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Club</a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-5" style="background:none">
+      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;background:none">Usefull Links</h5>
+      <div class="d-flex flex-column justify-content-start" style="background:none">
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Travel Guide</a>
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Domestic Journey</a>
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Domestic Flights</a>
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Legal</a>
+        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2" style="background:none"></i>Help</a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-5" style="background:none">
+      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px; background:none">Contact Us</h5>
+      <p style="background:none"><i class="fa fa-map-marker-alt mr-2" style="background:none"></i>123 Street, Ho Chi Minh City, Vietnam</p>
+      <p style="background:none"><i class="fa fa-phone-alt mr-2" style="background:none"></i>+012 345 67890</p>
+      <p style="background:none"><i class="fa fa-envelope mr-2" style="background:none"></i>info@example.com</p>
+      <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;background:none">Newsletter</h6>
+      <div class="w-100" style="background:none">
+        <div class="input-group">
+          <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+          <div class="input-group-append">
+            <button class="btn btn-primary px-3">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Controller</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <style>
+    body {
+      display: flex;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .sidebar {
+      width: 15%;
+      background-color: #212529;
+      color: #fff;
+      min-height: 100vh;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-size: 1.5em;
+    }
+
+    .sidebar a {
+      color: #adb5bd;
+      text-decoration: none;
+      padding: 10px 15px;
+      margin: 5px 0;
+      border-radius: 5px;
+      display: block;
+      font-size: 0.9em;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #495057;
+      color: #ffffff;
+    }
+
+    .main-content {
+      margin-left: 15%;
+      padding: 20px;
+      width: 85%;
+      background-color: #f8f9fa;
+    }
+
+    .main-content h2 {
+      margin-bottom: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #343a40;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .main-content h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: #007bff;
+      margin: 10px auto 0;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    .table {
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .thead-dark {
+      background-color: #343a40;
+      color: #ffffff;
+    }
+
+    .alert {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .action-buttons a {
+      font-size: 0.9em;
+      padding: 5px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .action-buttons .edit-btn {
+      background-color: #17a2b8;
+      color: #fff;
+    }
+
+    .action-buttons .edit-btn:hover {
+      background-color: #138496;
+    }
+
+    .action-buttons .delete-btn {
+      background-color: #dc3545;
+      color: #fff;
+    }
+
+    .action-buttons .delete-btn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2><a th:href="@{/adminController}" class="active">Admin Panel</a></h2>
+  <a th:href="@{/admins}" >Manage Admins</a>
+  <a th:href="@{/users}" href="#">Manage Users</a>
+  <a th:href="@{/bookings}" href="#">Manage Bookings</a>
+  <a th:href="@{/payments}" href="#">Manage Payments</a>
+  <a th:href="@{/flights}" href="#">Manage Flights</a>
+  <a th:href="@{/airports}" href="#">Manage Airports</a>
+  <a th:href="@{/tickets}" href="#">Manage Tickets</a>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <h2>ADMIN CONTROLLER</h2>
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+
+/* Dòng ngang */
+.horizontal-line {
+    width: 100%;
+    border-top: 2px solid #ddd;
+    margin-top: 10px;
+}

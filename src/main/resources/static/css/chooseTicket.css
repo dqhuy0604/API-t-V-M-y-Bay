@@ -1,0 +1,157 @@
+.ticket-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 16px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    justify-content: center; /* Căn giữa hàng */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+    margin-bottom: 20px; /* Thêm khoảng cách giữa các dòng */
+    background: none; /* Đảm bảo không có background ở chữ */
+
+}
+.flight-schedule{
+    background:none;
+}
+.ticket-flight-info {
+    flex: 0 1 60%; /* Chiếm 60% chiều rộng */
+    text-align: center;
+    background: none; /* Đảm bảo không có background ở chữ */
+
+}
+
+.ticket-header {
+    background: none; /* Đảm bảo không có background ở chữ */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Căn giữa các vé */
+    flex: 0 1 40%; /* Chiếm 35% chiều rộng */
+    margin-top: 20px;
+}
+
+.category {
+    cursor: pointer;
+    padding: 16px;
+    background-color: #28a745;
+    border-radius: 8px;
+    text-align: center;
+    margin: 8px; /* Thêm khoảng cách giữa các nút */
+    width: 48%;
+    transition: background-color 0.3s;
+    display: inline-block; /* Đảm bảo các nút nằm trên cùng một hàng */
+}
+
+.category:hover {
+    background-color:#fdd835 ;
+}
+
+.ticket-group {
+    display: flex;
+    justify-content: center; /* Căn giữa các vé trong nhóm */
+    gap: 5px;
+    overflow-x: auto;
+    background:none;
+}
+.ticket-group {display: none;} /* Ẩn vé mặc định */
+
+.ticket-card {
+    font-size: 18px;
+    width: 250px; /* Đảm bảo rằng mỗi vé có một chiều rộng cụ thể */
+    height: 500px; /* Chỉnh chiều cao của vé */
+    margin: 10px; /* Khoảng cách giữa các vé */
+    padding: 10px; /* Đệm bên trong vé */
+    border: 1px solid #ddd; /* Viền nhẹ cho vé */
+    border-radius: 8px; /* Làm mềm các góc của vé */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Căn chỉnh nội dung trong vé */
+    background: white;
+}
+.ticket-card:hover {
+    transform: translateY(-5px);
+}
+.ticket-header h4 {
+    font-size: 24px; /* Cỡ chữ cho giá vé */
+    font-weight: bold; /* Đậm cho giá vé */
+}
+
+.ticket-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    background:white;
+
+}
+
+.ticket-card li {
+    font-weight: normal;
+    background:white;
+
+}
+
+.ticket-card li strong {
+    font-weight: bold; /* In đậm các tiêu đề */
+    background:white;
+
+}
+
+.confirm-section {
+    text-align: center;
+    margin-top: 16px;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+.ticket-price {
+    background: white;  /* Màu nền của giá vé */
+    font-size: 24px;     /* Cỡ chữ cho giá vé */
+    font-weight: bold;   /* Đậm cho giá vé */
+    padding: 10px;       /* Thêm đệm xung quanh */
+    margin: 0;           /* Loại bỏ khoảng cách mặc định */
+    text-align: center;  /* Căn giữa nội dung */
+}
+
+.ticket-category {
+    background: white;  /* Màu nền của loại vé */
+    font-size: 18px;     /* Cỡ chữ cho loại vé */
+    font-weight: bold;   /* Đậm cho giá vé */
+    padding: 5px;        /* Thêm đệm xung quanh */
+    margin: 0;           /* Loại bỏ khoảng cách mặc định */
+    text-align: center;  /* Căn giữa nội dung */
+}
+.category h3, .category strong {
+    background: none; /* Đảm bảo không có background ở chữ */
+    color: white; /* Đặt màu chữ là trắng */
+    margin: 0; /* Loại bỏ margin mặc định của các phần tử này */
+    padding: 0; /* Loại bỏ padding nếu có */
+}
+.ticket-action {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+    background: none; /* Đảm bảo không có background ở chữ */
+    margin: 0; /* Loại bỏ margin mặc định của các phần tử này */
+    padding: 0; /* Loại bỏ padding nếu có */
+}
+
+.ticket-action label {
+    cursor: pointer;
+    background: none; /* Đảm bảo không có background ở chữ */
+}
+
+.ticket-action input {
+    margin-right: 8px; /* Khoảng cách giữa nút radio và chữ */
+}
