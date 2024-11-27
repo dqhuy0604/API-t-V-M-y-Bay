@@ -37,9 +37,9 @@ public class Flight {
 
     private FlightStatus flightStatus = FlightStatus.PLANNING;
 
-    private BigDecimal priceGeneral;
+    private int priceGeneral;
 
-    private BigDecimal pricePrime;
+    private int pricePrime;
 
     public LocalTime getDepartureTime() {
         return departureTime;
@@ -113,19 +113,19 @@ public class Flight {
         this.seatCapacity = seatCapacity;
     }
 
-    public BigDecimal getPriceGeneral() {
+    public int getPriceGeneral() {
         return priceGeneral;
     }
 
-    public void setPriceGeneral(BigDecimal priceGeneral) {
+    public void setPriceGeneral(int priceGeneral) {
         this.priceGeneral = priceGeneral;
     }
 
-    public BigDecimal getPricePrime() {
+    public int getPricePrime() {
         return pricePrime;
     }
 
-    public void setPricePrime(BigDecimal pricePrime) {
+    public void setPricePrime(int pricePrime) {
         this.pricePrime = pricePrime;
     }
 

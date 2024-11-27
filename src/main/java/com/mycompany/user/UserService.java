@@ -7,7 +7,24 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    @Autowired private UserRespository repo;
+    @Autowired private UserRepository repo;
+
+    public boolean authenticateUser(String username, String password) {
+        // Tìm kiếm người dùng theo username
+        Optional<User> userOptional = repo.findByUsername(username);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            // Kiểm tra mật khẩu, ở đây ví dụ so sánh trực tiếp
+            // Bạn nên mã hóa mật khẩu và so sánh với mật khẩu đã mã hóa trong cơ sở dữ liệu
+            return password.equals(user.getPassword());
+        }
+        return false;
+    }
+    public String getUserRole(String username) {
+        Optional<User> userOptional = repo.findByUsername(username);
+        return userOptional.map(User::getRole).orElse(null);
+    }
 
     public List<User> listAll() {
         return (List<User>) repo.findAll();
@@ -31,4 +48,5 @@ public class UserService {
         }
         repo.deleteById(id);
     }
+
 }

@@ -25,13 +25,13 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <!-- Contact Javascript File -->
     <!--<script src="smail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>-->
 
     <!-- Template Javascript -->
-    <script src="../static/js/main.js"></script>
+    <script src="/js/main.js"></script>
     <link rel="stylesheet" href="/css/image.css">
     <style>
         body {
@@ -46,7 +46,7 @@
         .main-container {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: fl;
             gap: 30px; /* Space between blocks */
             padding: 40px;
             max-width: 1200px;
@@ -60,7 +60,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 48%; /* Takes 48% width */
+            width: 100%; /* Takes 48% width */
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             min-height: 920px;
 
@@ -187,6 +187,8 @@
         }
 
         .confirm-button {
+            display: flex;
+            justify-content: center;
             background-color: #28a745;
             color: #ffffff;
             font-size: 18px;
@@ -306,54 +308,24 @@
     <!-- Contact Information Section -->
     <div class="form-container">
         <h2>Contact Information</h2>
-        <form>
+        <form th:action="@{/customer_input/save}" method="post" th:object="${ticket}">
+
+            <input type="hidden" th:field="*{flight_no}" value="${flight}">
             <label for="email">Required Email Address*</label>
-            <input type="email" id="email" name="email" placeholder="Enter email address" required>
-
-            <label for="phone-type">Phone Type*</label>
-            <select id="phone-type" name="phone-type" required>
-                <option value="personal">Personal</option>
-                <option value="office">Office</option>
-            </select>
-
-            <label for="country-code">Country Code*</label>
-            <input type="text" id="country-code" name="country-code" placeholder="Enter country code" required>
-
-            <form>
-                <label for="phone-number">Phone Number*</label>
-                <input type="text" id="phone-number" name="phone-number" placeholder="Enter your phone number" required>
-            </form>
-
-            <label for="emergency-name">Emergency Contact Name*</label>
-            <input type="text" id="emergency-name" name="emergency-name" placeholder="Emergency contact name">
-
-            <label for="emergency-country-code">Emergency Country Code*</label>
-            <input type="text" id="emergency-country-code" name="emergency-country-code" placeholder="Emergency country code">
-
-            <label for="emergency-phone">Emergency Phone Number*</label>
-            <input type="tel" id="emergency-phone" name="emergency-phone" placeholder="Emergency contact number">
-        </form>
-    </div>
-
-    <!-- Adult Section -->
-    <div class="form-container">
-        <h2>Adults</h2>
-        <form th:action="@{/customer_input/save}" method="post" th:object="${customer}">
+            <input type="email" id="email"  th:field="*{email}" name="email" placeholder="Enter email address" required>
 
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter first and middle name" required>
+            <input type="text" id="name" name="name" th:field="*{name}" placeholder="Enter your Name" required>
 
-            <label for="last-name">Last Name (as in ID/passport)*</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Enter last name" required>
+            <label for="address">Address</label>
+            <input type="text" id="address"  th:field="*{address}" name="address" placeholder="Enter your address" required>
 
-            <label for="dob">Date of Birth*</label>
-            <input type="date" id="dob" name="dob" required>
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" th:field="*{phone}" placeholder="Emergency contact name">
 
-            <label for="frequent-program">Frequent Customer Program</label>
-            <input type="text" id="frequent-program" name="frequent-program" placeholder="Enter program">
-
-            <label for="frequent-number">Frequent Customer Card Number</label>
-            <input type="text" id="frequent-number" name="frequent-number" placeholder="Enter card number">
+            <label for="ticket_type">Ticket Type</label>
+            <input type="text" id="ticket_type" name="ticket_type" th:field="*{ticket_type}" placeholder="Emergency Ticket Type">
+            <button type="submit" class="confirm-button">CONFIRM</button>
         </form>
     </div>
 </div>
@@ -368,7 +340,6 @@
             </label>
         </div>
     </div>
-    <button class="confirm-button">CONFIRM</button>
 </div>
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">

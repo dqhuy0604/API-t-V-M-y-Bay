@@ -1,8 +1,6 @@
 package com.mycompany.ticket;
 
-import com.mycompany.customer.Customer;
 import com.mycompany.flight.Flight;
-import com.mycompany.payment.PaymentStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -20,9 +18,17 @@ public class Ticket {
     @JoinColumn(name = "flight_id",nullable = false)
     private Flight flight_no;
 
-    @ManyToOne
-    @JoinColumn(name="customer_id",nullable=false)
-    private Customer customer_id;
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String phone;
+
+    @Column(nullable = false)
+    private String address;
 
     @Column(nullable = false)
     private String ticket_type;
@@ -34,21 +40,41 @@ public class Ticket {
     protected void onCreate() {
         this.ticket_date = LocalDateTime.now();
     }
-    private PaymentStatus status = PaymentStatus.Pending;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     private TicketStatus ticketStatus =TicketStatus.Pending;
 
-
-    @Column(nullable = false)
-    private int no_of_passengers;
-
-    public PaymentStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(PaymentStatus status) {
-        this.status = status;
-    }
 
     public Flight getFlight_no() {
         return flight_no;
@@ -57,15 +83,6 @@ public class Ticket {
     public void setFlight_no(Flight flight_no) {
         this.flight_no = flight_no;
     }
-
-    public Customer getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(Customer customer_id) {
-        this.customer_id = customer_id;
-    }
-
     public String getTicket_type() {
         return ticket_type;
     }
@@ -90,14 +107,6 @@ public class Ticket {
         this.ticketStatus = ticketStatus;
     }
 
-    public int getNo_of_passengers() {
-        return no_of_passengers;
-    }
-
-    public void setNo_of_passengers(int no_of_passengers) {
-        this.no_of_passengers = no_of_passengers;
-    }
-
     public int getId() {
         return id;
     }
@@ -106,18 +115,18 @@ public class Ticket {
         this.id = id;
     }
     public void rejectStatus(){
-        if (this.status != null) {
-            this.status = PaymentStatus.fromStatusCode(3);
-            if (this.status == null) {
-                this.status = status.Cancelled;
+        if (this.ticketStatus != null) {
+            this.ticketStatus = TicketStatus.fromStatusCode(3);
+            if (this.ticketStatus == null) {
+                this.ticketStatus = ticketStatus.Cancelled;
             }
         }
     }
     public void acceptStatus(){
-        if (this.status != null) {
-            this.status = PaymentStatus.fromStatusCode(2);
-            if (this.status == null) {
-                this.status = status.Confirmed;
+        if (this.ticketStatus != null) {
+            this.ticketStatus = TicketStatus.fromStatusCode(2);
+            if (this.ticketStatus == null) {
+                this.ticketStatus = ticketStatus.Confirmed;
             }
         }
     }

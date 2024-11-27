@@ -124,8 +124,8 @@
   <h2><a th:href="@{/adminController}">Admin Panel</a></h2>
   <a th:href="@{/admins}" >Manage Admins</a>
   <a th:href="@{/users}" class="active" href="#">Manage Users</a>
-  <a th:href="@{/bookings}" href="#">Manage Bookings</a>
-  <a th:href="@{/payments}" href="#">Manage Payments</a>
+<!--  <a th:href="@{/bookings}" href="#">Manage Bookings</a>-->
+<!--  <a th:href="@{/payments}" href="#">Manage Payments</a>-->
   <a th:href="@{/flights}" href="#">Manage Flights</a>
   <a th:href="@{/airports}" href="#">Manage Airports</a>
   <a th:href="@{/tickets}" href="#">Manage Tickets</a>
@@ -157,7 +157,7 @@
       <th:block th:each="user : ${listUser}">
         <tr>
           <td>[[${user.id}]]</td>
-          <td>[[${user.name}]]</td>
+          <td>[[${user.username}]]</td>
           <td>[[${user.email}]]</td>
           <td>[[${user.password}]]</td>
           <td>[[${user.phone}]]</td>

@@ -1,6 +1,4 @@
 package com.mycompany.ticket;
-
-import com.mycompany.payment.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

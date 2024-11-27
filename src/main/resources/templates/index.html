@@ -32,7 +32,7 @@
     <div class="row">
       <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
         <div class="d-inline-flex align-items-center">
-          <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+          <p><i class="fa fa-envelope mr-2"></i>2251120015@ut.edu.vn</p>
           <p class="text-body px-3">|</p>
           <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
         </div>
@@ -42,7 +42,7 @@
           <a class="text-primary px-3" href="">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a class="text-primary px-3" href="">
+          <a class="text-primary px-3" href="" onclick="logout()">
             <i class="fab fa-twitter"></i>
           </a>
           <a class="text-primary px-3" href="">
@@ -54,6 +54,7 @@
           <a class="text-primary pl-3" href="">
             <i class="fab fa-youtube"></i>
           </a>
+          <a href="" onclick="logout()" class="nav-item nav-link">Logout</a>
         </div>
       </div>
     </div>
@@ -75,7 +76,7 @@
       <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
         <div class="navbar-nav ml-auto py-0">
           <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Exploring</a>
+            <a href="index" class="nav-link dropdown-toggle" data-toggle="dropdown">Exploring</a>
             <div class="dropdown-menu border-0 rounded-0 m-0">
               <a href="#" class="dropdown-item">Destination</a>
               <a href="#" class="dropdown-item">Special Offers</a>
@@ -86,9 +87,9 @@
           </div>
 
           <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Booking</a>
+            <a href="booking_ticket" class="nav-link dropdown-toggle" data-toggle="dropdown">Booking</a>
             <div class="dropdown-menu border-0 rounded-0 m-0">
-              <a href="#" class="dropdown-item">Booking Now</a>
+              <a href="/booking_ticket" class="dropdown-item">Booking Now</a>
               <a href="#" class="dropdown-item">Ticket Booking Information</a>
               <a href="#" class="dropdown-item">Aillary Services</a>
               <a href="#" class="dropdown-item">Experiencing with Happiest</a>
@@ -106,10 +107,9 @@
             </div>
           </div>
           <a href="#club" class="nav-item nav-link">Happiest Club</a>
-          <a href="./support.html" class="nav-item nav-link">Support</a>
-          <a href="./login.html" class="nav-item nav-link">Login</a>
-          <a href="./Signup.html" class="nav-item nav-link">Signup</a>
-
+          <a href="/support" class="nav-item nav-link">Support</a>
+          <a href="/login" class="nav-item nav-link">Login</a>
+          <a href="/signup" class="nav-item nav-link">Signup</a>
         </div>
       </div>
     </nav>
@@ -127,7 +127,7 @@
           <div class="p-3" style="max-width: 900px">
             <h4 class="text-white text-uppercase mb-md-3">Flight Booking</h4>
             <h1 class="display-3 text-white mb-md-4">Let's Discover The World</h1>
-            <a href="./booking_ticket.html" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+            <a href="/booking_ticket" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
           </div>
         </div>
       </div>
@@ -639,7 +639,19 @@
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+<script>
+  // Hàm đăng xuất
+  function logout() {
+    // Xóa thông tin người dùng trong localStorage
+    localStorage.removeItem('user');
 
+    // Chuyển hướng về trang đăng nhập
+    window.location.href = '/login';  // Trang đăng nhập của bạn
+  }
+
+  // Gọi hàm logout khi người dùng nhấn nút đăng xuất
+  document.getElementById('logoutButton').addEventListener('click', logout);
+</script>
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -654,6 +666,8 @@
 <script src="mail/contact.js"></script>-->
 
 <!-- Template Javascript -->
-<script src="../static/js/main.js"></script>
+<script src="../static/js/main.js">
+
+</script>
 </body>
 </html>

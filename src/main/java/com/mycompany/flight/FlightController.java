@@ -2,7 +2,6 @@ package com.mycompany.flight;
 
 import com.mycompany.airport.Airport;
 import com.mycompany.airport.AirportService;
-import com.mycompany.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +18,6 @@ public class FlightController {
     @Autowired private  FlightService service;
 
     @Autowired private AirportService airportService;
-
-    @Autowired private CustomerService customerService;
-
 
 
     @GetMapping("/booking_ticket")

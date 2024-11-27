@@ -467,11 +467,11 @@
         </div>
         <!-- Right Section: Ticket Header -->
         <div class="ticket-header">
-          <a class="category economy" style="text-decoration:none;"  th:href="@{'ticker_choose/' + ${flight.id}}">
+          <a class="category economy" style="text-decoration:none;"  th:href="@{'customer_input/' + ${flight.id}}">
           <h3>ECONOMY</h3>
             <strong>[[${flight.priceGeneral}]]VND</strong>
           </a>
-          <a class="category business" style="text-decoration:none;"  th:href="@{'ticker_choose/' + ${flight.id}}" >
+          <a class="category business" style="text-decoration:none;"  th:href="@{'customer_input/' + ${flight.id}}" >
                 <h3>BUSINESS</h3>
             <strong>[[${flight.pricePrime}]]VND</strong>
           </a>
